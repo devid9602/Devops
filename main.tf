@@ -16,14 +16,13 @@ data "aws_ami" "amazon_linux2" {
 
   filter {
     name   = "name"
-    values = ["ami-0bdd0d71e3c47a3ff"]
+    values = ["amzn2-ami-hvm-2.0.*-x86_64-gp2"]
   }
 }
 
-
 module "ec2" {
   source         = "./ec2"
-  ami_id         = data.aws_ami.amazon_linux2.id
+  ami_id         = "ami-0bdd0d71e3c47a3ff" # custom AMI you created
   instance_type  = "t2.micro"
   public_subnet  = module.network.public_subnet_id
   private_subnet = module.network.private_subnet_id
