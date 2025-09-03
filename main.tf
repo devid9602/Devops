@@ -21,12 +21,12 @@ data "aws_ami" "amazon_linux2" {
 }
 
 module "ec2" {
-  source         = "./ec2"
-  ami_id         = "ami-0bdd0d71e3c47a3ff" # custom AMI you created
+  source = "./ec2"
+  public_ami_id  = "ami-0bdd0d71e3c47a3ff"       # your custom public AMI
+  private_ami_id = "ami-00ca32bbc84273381"       # Amazon Linux 2023 AMI
   instance_type  = "t2.micro"
   public_subnet  = module.network.public_subnet_id
   private_subnet = module.network.private_subnet_id
-  sg_id          = module.security.sg_id
+  sg_id = module.security.sg_id
 }
-
 
