@@ -12,6 +12,10 @@ jobs:
       AWS_DEFAULT_REGION: us-east-1
       TF_IN_AUTOMATION: true
 
+    defaults:
+      run:
+        working-directory: /Users/mahadev/Desktop/Devops/terraform/Terraform_Project
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -23,8 +27,6 @@ jobs:
 
       - name: Terraform Init
         run: terraform init
-        working-directory: ./Terraform_Project   # path to your Terraform code
 
       - name: Terraform Destroy
         run: terraform destroy -auto-approve
-        working-directory: ./Terraform_Project
