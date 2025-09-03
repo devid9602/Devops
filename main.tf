@@ -16,9 +16,10 @@ data "aws_ami" "amazon_linux2" {
 
   filter {
     name   = "name"
-    values = ["amzn2-ami-hvm-2.0.*-x86_64-gp2"]
+    values = ["ami-0bdd0d71e3c47a3ff"]
   }
 }
+
 
 module "ec2" {
   source         = "./ec2"
